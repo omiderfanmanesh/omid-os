@@ -137,25 +137,25 @@ The repository keeps independent deployment configuration for both platforms:
 
 | Platform | Configuration | Serverless route |
 |----------|---------------|------------------|
-| Cloudflare Pages | `wrangler.jsonc`, `_headers`, `functions/` | `functions/api/chat.js` |
+| Cloudflare Workers | `wrangler.jsonc`, `_headers`, `worker.mjs` | `worker.mjs` |
 | Netlify | `netlify.toml`, `netlify/functions/` | `netlify/functions/chat.mjs` |
 
 Both routes use the same shared chat handler, validation, portfolio context and streaming parser.
 
-### Cloudflare Pages deployment (recommended)
+### Cloudflare Workers deployment (recommended)
 
 1. Rotate the Ollama API key if it has ever appeared in logs or terminal output.
 2. Push this repository to GitHub.
-3. In Cloudflare, open **Workers & Pages → Create → Pages → Connect to Git**.
+3. In Cloudflare, open **Workers & Pages → Create → Import a repository**.
 4. Select the repository and configure:
 
 ```text
 Build command: npm run build
-Build output directory: dist
+Deploy command: npx wrangler deploy
 Root directory: /
 ```
 
-5. Open the Pages project under **Settings → Variables and Secrets** and add:
+5. Open the Worker under **Settings → Variables and Secrets** and add:
 
 ```text
 OLLAMA_API_KEY=<your rotated key>          # encrypted secret
@@ -164,7 +164,7 @@ OLLAMA_BASE_URL=https://ollama.com/api     # environment variable
 ```
 
 6. Add the variables to both Production and Preview if deploy previews should use AI.
-7. Deploy. Cloudflare discovers `functions/api/chat.js` and serves it at `/api/chat`.
+7. Deploy. Wrangler uploads `dist/` as Static Assets and `worker.mjs` serves `/api/chat`.
 8. Under **Custom domains**, add `omid-os.dev` and optionally `www.omid-os.dev`.
 
 For CLI deployment:
@@ -228,9 +228,9 @@ assets/css/omid-os.css    green CRT theme
 assets/data/portfolio.js  single source of truth
 assets/js/omid-terminal.js terminal logic, commands, AI client
 assets/cv/                public CV PDF
-netlify/functions/chat.mjs secure Ollama proxy
-functions/api/chat.js       Cloudflare Pages adapter
-wrangler.jsonc              Cloudflare deployment config
+netlify/functions/chat.mjs secure shared Ollama proxy + Netlify adapter
+worker.mjs                 Cloudflare Worker adapter
+wrangler.jsonc             Cloudflare Worker + Static Assets config
 netlify.toml                Netlify deployment config
 ```
 
