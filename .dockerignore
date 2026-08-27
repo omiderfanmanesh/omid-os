@@ -1,0 +1,11 @@
+node_modules
+.git
+.opencode
+.specify
+reference
+screensaver-*.html
+.DS_Store
+.env*
+!.env.example
+.netlify
+*.log

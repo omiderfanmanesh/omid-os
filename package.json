@@ -1,0 +1,39 @@
+{
+  "name": "omid-os",
+  "version": "1.0.0",
+  "description": "OMID/OS — AI-powered terminal portfolio for Omid Erfanmanesh",
+  "main": "index.html",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node server.mjs",
+    "serve": "node server.mjs",
+    "dev": "node server.mjs",
+    "dev:netlify": "netlify dev",
+    "dev:cloudflare": "npm run build && npx wrangler@latest pages dev dist",
+    "dev:docker": "docker compose up -d",
+    "dev:docker:stop": "docker compose down",
+    "deploy:cloudflare": "npm run build && npx wrangler@latest pages deploy dist --project-name omid-os",
+    "deploy:netlify": "npm run build && netlify deploy --prod",
+    "lint": "node --check assets/js/omid-terminal.js && node --check assets/data/portfolio.js && node --check server.mjs && node --check netlify/functions/chat.mjs && node --check functions/api/chat.js && node --check build.mjs",
+    "lint:esm": "node --input-type=module -e \"import('./netlify/functions/chat.mjs').then(() => console.log('OK'))\"",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omiderfanmanesh/omid-os.git"
+  },
+  "keywords": [
+    "portfolio",
+    "terminal",
+    "xterm",
+    "ai-engineer",
+    "rag",
+    "ollama"
+  ],
+  "author": "Omid Erfanmanesh <o.erfanmanesh@gmail.com>",
+  "license": "SEE LICENSE IN README.md",
+  "homepage": "https://omid-os.dev"
+}

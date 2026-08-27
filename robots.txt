@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /reference/
+Disallow: /.opencode/
+Disallow: /.specify/
+
+Sitemap: https://omid-os.dev/sitemap.xml

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Omid Erfanmanesh — AI Engineer. Production AI, LLMs, RAG, ML and Data Engineering. Interactive terminal portfolio.">
+    <meta name="keywords" content="Omid Erfanmanesh, AI Engineer, Data Scientist, LLMs, RAG, Azure, Databricks, Machine Learning">
+    <meta name="author" content="Omid Erfanmanesh">
+    <meta name="theme-color" content="#020503">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Omid Erfanmanesh | AI Engineer">
+    <meta property="og:description" content="Production AI • LLMs • RAG • ML • Data Engineering. Explore the terminal portfolio of Omid Erfanmanesh.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://omid-os.dev">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Omid Erfanmanesh | AI Engineer">
+    <meta name="twitter:description" content="Production AI • LLMs • RAG • ML • Data Engineering">
+
+    <title>Omid Erfanmanesh | AI Engineer</title>
+
+    <link rel="canonical" href="https://omid-os.dev">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23020503'/%3E%3Ctext x='16' y='24' font-family='monospace' font-size='22' font-weight='700' fill='%2380ff44' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
+
+    <!-- XTerm.js — loaded locally for reliability, synchronously so globals are available -->
+    <link rel="stylesheet" href="assets/vendor/xterm/xterm.css">
+    <script src="assets/vendor/xterm/xterm.min.js" defer></script>
+    <script src="assets/vendor/xterm/xterm-addon-fit.min.js" defer></script>
+
+    <link rel="stylesheet" href="assets/css/omid-os.css?v=1.1.0">
+
+    <!-- Person structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Omid Erfanmanesh",
+      "url": "https://omid-os.dev",
+      "jobTitle": "AI Engineer",
+      "email": "o.erfanmanesh@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Milan", "addressCountry": "IT" },
+      "sameAs": [
+        "https://www.linkedin.com/in/OmidErfanmanesh",
+        "https://github.com/OmidErfanmanesh"
+      ],
+      "knowsAbout": ["Generative AI", "RAG", "LLMs", "Machine Learning", "Data Engineering", "Azure", "Computer Vision"]
+    }
+    </script>
+</head>
+<body class="no-js">
+    <div class="crt" aria-hidden="true"></div>
+
+    <!-- No-JS fallback content -->
+    <main id="no-js">
+        <h1>OMID/OS</h1>
+        <p class="roleline">Omid Erfanmanesh — AI Engineer • Data Scientist</p>
+        <p class="summary">AI Engineer with 4+ years of experience building and deploying production AI systems across Generative AI, RAG, AI agents, computer vision and data engineering. Focus on taking AI solutions from proof of concept to production on Azure.</p>
+        <p>JavaScript is required to run the interactive terminal. You can still view the <a href="/assets/cv/Omid_Erfanmanesh_CV.pdf">CV</a>, or visit <a href="https://www.linkedin.com/in/OmidErfanmanesh">LinkedIn</a> and <a href="https://github.com/OmidErfanmanesh">GitHub</a>.</p>
+    </main>
+
+    <!-- Terminal app -->
+    <div id="app" aria-label="OMID/OS portfolio">
+        <div id="boot" aria-hidden="true">
+            <div class="boot-top">
+                <div class="boot-title">OMID/OS</div>
+                <div class="boot-ver">v1.0.0</div>
+            </div>
+            <div class="boot-name">Omid Erfanmanesh</div>
+            <div class="boot-role">AI Engineer • Data Scientist</div>
+            <div class="boot-log" id="boot-log"></div>
+            <div class="boot-tagline" id="boot-tagline" hidden>Don't browse my portfolio. Talk to it.</div>
+            <div class="boot-hint" id="boot-hint" hidden>Type 'help' or ask anything.</div>
+            <div class="boot-bar"><i id="boot-bar"></i></div>
+            <div class="boot-skip" id="boot-skip">tap anywhere or press any key to skip ▸</div>
+        </div>
+
+        <header id="terminal-header">
+            <div class="brand">
+                <span aria-hidden="true">&gt;_</span>
+                <span>OMID/OS</span>
+                <span class="ver">v1.0.0</span>
+            </div>
+            <div class="controls">
+                <div class="view-toggle" role="tablist" aria-label="View mode">
+                    <button id="mode-terminal" class="active" role="tab" aria-selected="true" aria-controls="terminal-container">Terminal</button>
+                    <button id="mode-visual" role="tab" aria-selected="false" aria-controls="visual-mode" tabindex="-1">Visual</button>
+                </div>
+            </div>
+        </header>
+
+        <main id="terminal-container" role="tabpanel" aria-labelledby="mode-terminal"></main>
+
+        <main id="visual-mode" role="tabpanel" aria-labelledby="mode-visual" hidden>
+            <div class="visual-wrap" id="visual-content"></div>
+        </main>
+    </div>
+
+    <script src="assets/data/portfolio.js?v=1.0.1" defer></script>
+    <script src="assets/js/omid-terminal.js?v=1.1.1" defer></script>
+</body>
+</html>

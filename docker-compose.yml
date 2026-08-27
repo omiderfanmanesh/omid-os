@@ -1,0 +1,18 @@
+services:
+  omid-os:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: omid-os-dev
+    ports:
+      - "127.0.0.1:8888:8888"
+    env_file:
+      - .env
+    environment:
+      - PORT=8888
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8888/healthz"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
