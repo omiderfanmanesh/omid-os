@@ -871,7 +871,9 @@ Location  ${P.location || 'Milan, Italy'}`.trim();
     // Formatters
     // --------------------------------------------------------------------------
     function formatExperience(exp) {
-        let out = `${exp.company}\n${exp.role}\n${exp.start} — ${exp.end || 'Present'}\n\n${exp.summary}\n\nResponsibilities:\n${exp.responsibilities.map(r => `• ${r}`).join('\n')}\n\nStack: ${exp.stack.join(' · ')}`;
+        let out = `${exp.company}\n${exp.role}\n${exp.start} — ${exp.end || 'Present'}\n`;
+        if (exp.summary) out += `\n${exp.summary}\n`;
+        out += `\nResponsibilities:\n${exp.responsibilities.map(r => `• ${r}`).join('\n')}\n\nStack: ${exp.stack.join(' · ')}`;
         return out;
     }
 
@@ -1050,8 +1052,8 @@ Location  ${P.location || 'Milan, Italy'}`.trim();
             <div class="card${score > 0 ? ' relevant-card' : ''}">
                 <h3>${esc(exp.role)} — ${esc(exp.company)}</h3>
                 <div class="meta">${esc(exp.start)} — ${esc(exp.end || 'Present')}</div>
-                <p>${esc(exp.summary)}</p>
-                <ul>${exp.responsibilities.slice(0, 4).map(r => `<li>${esc(r)}</li>`).join('')}</ul>
+                <p>${esc(exp.summary || '')}</p>
+                <ul>${exp.responsibilities.map(r => `<li>${esc(r)}</li>`).join('')}</ul>
                 <div class="chips">${exp.stack.slice(0, 8).map(s => `<span class="chip">${esc(s)}</span>`).join('')}</div>
             </div>
         `).join('');
@@ -1061,6 +1063,7 @@ Location  ${P.location || 'Milan, Italy'}`.trim();
                 <h3>${esc(p.name)}</h3>
                 <div class="meta">${esc(p.category)}${p.status ? ' • ' + esc(p.status) : ''}</div>
                 <p>${esc(p.description)}</p>
+                ${p.responsibilities ? `<ul>${p.responsibilities.map(r => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
                 <div class="chips">${p.technologies.slice(0, 6).map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>
                 <div class="links">${p.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}</div>
             </div>
@@ -1102,6 +1105,28 @@ Location  ${P.location || 'Milan, Italy'}`.trim();
                     <div class="meta">${esc(e.institution)} • ${esc(e.start)} — ${esc(e.end || 'Present')}</div>
                 </div>
             `).join('')}
+
+            ${(portfolio.activities || []).length ? `
+            <h2>Activities</h2>
+            ${(portfolio.activities || []).map(a => `
+                <div class="card">
+                    <h3>${esc(a.role)} — ${esc(a.organization)}</h3>
+                    <div class="meta">${esc(a.institution || '')} • ${esc(a.start)} — ${esc(a.end || 'Present')}</div>
+                    <p>${esc(a.description)}</p>
+                    ${a.responsibilities ? `<ul>${a.responsibilities.map(r => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
+                </div>
+            `).join('')}
+            ` : ''}
+
+            ${(portfolio.certifications || []).length ? `
+            <h2>Certifications</h2>
+            ${(portfolio.certifications || []).map(c => `
+                <div class="card">
+                    <h3>${esc(c.name)}</h3>
+                    <div class="meta">${esc(c.issuer)}${c.year ? ' • ' + esc(c.year) : ''}</div>
+                </div>
+            `).join('')}
+            ` : ''}
 
             <h2>Contact</h2>
             <p class="summary">${esc(P.email)} • ${esc(P.phone)} • ${esc(P.location)}</p>

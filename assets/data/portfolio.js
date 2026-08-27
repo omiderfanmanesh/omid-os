@@ -108,10 +108,9 @@
             current: false,
             type: 'thesis',
             location: 'Italy',
-            summary: 'Built and deployed an edge CNN for UAV emergency landing site segmentation.',
+            summary: null,
             responsibilities: [
-                'Trained a CNN for semantic segmentation to help UAVs identify safe emergency landing spots.',
-                'Deployed the model on a Jetson Nano using pruning and quantization to fit the edge compute budget.',
+                'Trained a CNN for semantic segmentation to help UAVs identify safe emergency landing spots, then deployed it on a Jetson Nano, using pruning and quantization to fit the edge compute budget.',
                 'Built training pipelines on AWS SageMaker and designed data cleaning and augmentation strategies to improve model robustness across varying lighting, terrain and weather conditions.'
             ],
             stack: ['Python', 'PyTorch / TensorFlow', 'AWS SageMaker', 'Jetson Nano', 'Pruning', 'Quantization', 'Semantic Segmentation']
@@ -187,7 +186,11 @@
             start: '2021',
             end: '2022',
             description:
-                'Developed AI components for UAV autonomy (trajectory planning, obstacle detection, object recognition) using ROS, Gazebo and ArduPilot.'
+                'Developed AI components for UAV autonomy (trajectory planning, obstacle detection, object recognition) using ROS, Gazebo and ArduPilot.',
+            responsibilities: [
+                'Developed AI components for UAV autonomy (trajectory planning, obstacle detection, and object recognition) using ROS, Gazebo, and ArduPilot.',
+                'Worked alongside aerospace, software, and controls teammates to integrate perception and planning modules into simulated and real flight workflows.'
+            ]
         }
     ];
 
