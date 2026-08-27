@@ -905,7 +905,15 @@ Location  ${P.location || 'Milan, Italy'}`.trim();
         aiAbortReason = null;
         term.writeln('');
         term.write(colorize('omid.ai:~$ ', 'prompt'));
-        term.write('connecting...');
+
+        const spinnerFrames = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧'];
+        let spinnerFrame = 0;
+        const spinner = setInterval(() => {
+            term.write('\r\x1b[K');
+            term.write(colorize('omid.ai:~$ ', 'prompt'));
+            term.write(`${spinnerFrames[spinnerFrame]} connecting...`);
+            spinnerFrame = (spinnerFrame + 1) % spinnerFrames.length;
+        }, 120);
 
         aiAbortController = new AbortController();
         const timeout = setTimeout(() => {
@@ -928,7 +936,8 @@ Location  ${P.location || 'Milan, Italy'}`.trim();
             const reader = res.body.getReader();
             const decoder = new TextDecoder();
 
-            // clear connecting text
+            // clear spinner and connecting text
+            clearInterval(spinner);
             term.write('\r\x1b[K');
             term.write(colorize('omid.ai:~$ ', 'prompt'));
 
@@ -961,6 +970,7 @@ Location  ${P.location || 'Milan, Italy'}`.trim();
             term.writeln('');
         })
         .catch(err => {
+            clearInterval(spinner);
             if (err.name === 'AbortError') {
                 term.writeln(aiAbortReason === 'timeout' ? '\n[ERROR] Request timed out.' : '\n^C');
             } else {
