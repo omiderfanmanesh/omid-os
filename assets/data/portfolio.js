@@ -15,7 +15,7 @@
 }(typeof self !== 'undefined' ? self : this, function () {
     'use strict';
 
-    const VERSION = '1.0.0';
+    const VERSION = '1.1.0';
 
     const profile = {
         name: 'Omid Erfanmanesh',
@@ -68,8 +68,9 @@
             current: true,
             type: 'fulltime',
             location: 'Italy',
-            summary: 'Building AI solutions for engineering and manufacturing teams.',
+            summary: 'Building AI solutions for engineering and manufacturing teams, with a current focus on Generative AI and modern data platforms.',
             responsibilities: [
+                'Building AI solutions for engineering and manufacturing teams, with a current focus on Generative AI and modern data platforms.',
                 'Developing data pipelines and streaming applications on Azure Databricks using Apache Spark, Delta Lake and Event Hubs.',
                 'Designing LLM applications and AI agents to automate internal workflows and improve access to engineering knowledge.',
                 'Working with software, data and domain experts to turn business requirements into production-ready AI solutions.',
